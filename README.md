@@ -1,3 +1,6 @@
 ## Abstract
 
-    Gesture Recognition is a prime challenge today.
+Gesture recogniton is a prime challenge today
+
+
+
