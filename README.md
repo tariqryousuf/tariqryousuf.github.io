@@ -2,14 +2,23 @@
 
 ## Abstract
 
-Gesture Recognition is a emerging field, with a breadth of use ranging from improved human-computer intaractions, medical care, and numerous more applications.
-In this project, we are attempting to build a robust, efficent gesture recognition application to allow recognition of shapes drawn on a 2-D surface.
-By leveraging the accelerometer and TinyML support built into the Arduiono Nano BLE Sense 33, we hope to be able to recognize many common shapes irrespective of the user.
-We forsee difficulty collecting enough training data to ensure a robust model, therefore we will be especially dillignet on selecting a classifeir that won't overfit
-to our own handwriting. 
+Gesture Recognition is an emerging field with a breadth of use ranging from improved human-computer interactions, medical care, and numerous more applications.
+In this project, we are attempting to build a robust, efficient gesture recognition application to allow recognition of shapes drawn on a 2-D surface. 
+By leveraging the accelerometer and TinyML support built into the Arduino Nano BLE Sense 33, we hope to be able to recognize many common shapes irrespective of the user. 
+We foresee difficulty collecting enough training data to ensure a robust model; therefore, we will be especially diligent on selecting a classifier that won’t overfit to our own handwriting.
 
-Digits present another significant challenge, and our ability to accurately and robustly identify digits may be diminished compared to that of shapes.
-Thus, we hope to first develop strong recognition of shapes, and then evaluate our model before proceeding towards digit recognition.
+Digits present another significant challenge and our ability to accurately and robustly identify digits may be diminished compared to that of shapes. 
+While these numbers may simply be a combination of intricate shapes, the challenge would be determining the differences between them. 
+While shape detection has been utilized and developed before, we must ensure that this model can operate successfully and be altered for other applications. 
+Thus, we hope to first develop strong recognition of shapes and then evaluate our model before proceeding towards digit recognition.
+
+## References 
+
+(1) [uWave: Accelerometer-based personalized gesture recognition and it applications](https://www.sciencedirect.com/science/article/abs/pii/S1574119209000674)
+
+(2) [Gesthaar: An accelerometer-based gesture recognition method and its application in NUI driven pervasive healthcare](https://ieeexplore.ieee.org/abstract/document/6152471)
+
+(3) [An accelerometer based handwriting recognition of English alphabets using basic strokes](https://ieeexplore.ieee.org/abstract/document/8227846)
 
 
 
