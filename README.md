@@ -43,8 +43,7 @@ This github webpage walks through the process of training a Gaussian Kernel SVM 
 with enough capabilites. We will use this method to train and import the Gaussian Kernel SVM to the Nano Sense BLE, and then test the effectiveness of the strategy suggested in (4). 
 
 (6) [Haar Transform Library for C](https://people.sc.fsu.edu/~jburkardt/c_src/haar/haar.html) \
-This code repository provided by Florida State University offers the Haar and Inverse Haar Transform implemented in C. Thus, this code can be easily ported to the Nano BLE sense, 
-and then used in order to replicate the approach used in (3)
+This code repository provided by Florida State University offers the Haar and Inverse Haar Transform implemented in C. Thus, this code can be easily ported to the Nano BLE sense in order to replicate the approach used in (3)
 
 
 
