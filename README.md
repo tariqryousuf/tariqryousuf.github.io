@@ -14,7 +14,7 @@ Thus, we hope to first develop strong recognition of shapes and then evaluate ou
 
 ## References 
 
-(1) [uWave: Accelerometer-based personalized gesture recognition and it applications](https://www.sciencedirect.com/science/article/abs/pii/S1574119209000674)
+(1) [uWave: Accelerometer-based personalized gesture recognition and it applications](https://www.sciencedirect.com/science/article/abs/pii/S1574119209000674) \
 This research article presents uWave, a higly-efficient, low-complexity method of gesture recognition using Dynamic Time Warping. This research paper boasts 
 an approach that requires small amounts of training data and very little computational capabilites, however this approach relies on a simple and naive classifier.
 Dynamic Time Warping, and its tranformation into a classifier in this research paper, would struggle to identify gestures that differ from the training data. Nevertheless,
