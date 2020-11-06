@@ -26,7 +26,7 @@ This application facilitates an efficient method of producing useful training da
 local computer, but the source code is designed for Arduino and can be easily deployed to various microcontroller. Thus, we believe it is appropraiate to use
 this application due to these benifits. 
 
-(3) [Example-based Sensor Predictions] (https://github.com/damellis/ESP) \
+(3)[Example-based Sensor Predictions](https://github.com/damellis/ESP) \
 This github repository provides the source code for the above application. This repository includes an implementaiton of Dynamic Time Warping that can be easily ported to Arduino.
 We hope to ensure that this classifier can run on the Arduino Nano BLE Sense 33 for completenes. Note that this classifier is slightly different than that offered in (1), but 
 it still relies completely on Dynamic Time Warping. Thus we beleive that it is a strong representation of the uWaves classifier.
