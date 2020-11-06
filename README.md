@@ -20,9 +20,21 @@ an approach that requires small amounts of training data and very little computa
 Dynamic Time Warping, and its tranformation into a classifier in this research paper, would struggle to identify gestures that differ from the training data. Nevertheless,
 this approach may prove adequate in certain situations for the gestures tested, thus this method will serve as a baseline classifier in this analysis.
 
-(2) [Gesthaar: An accelerometer-based gesture recognition method and its application in NUI driven pervasive healthcare](https://ieeexplore.ieee.org/abstract/document/6152471)
+(2)[Gesture Recognition using Accelerometer and ESP](https://create.arduino.cc/projecthub/mellis/gesture-recognition-using-accelerometer-and-esp-71faa1) \
+This application uses the Example-based Sensor Predictions source code (referenced below) in order to classify real-time accelerometer data from an Arduino.
+This application facilitates an efficient method of producing useful training data and testing various gestures through a GUI. This application will run on our
+local computer, but the source code is designed for Arduino and can be easily deployed to various microcontroller. Thus, we believe it is appropraiate to use
+this application due to these benifits. 
 
-(3) [An accelerometer based handwriting recognition of English alphabets using basic strokes](https://ieeexplore.ieee.org/abstract/document/8227846)
+(3) [Example-based Sensor Predictions] (https://github.com/damellis/ESP) \
+This github repository provides the source code for the above application. This repository includes an implementaiton of Dynamic Time Warping that can be easily ported to Arduino.
+We hope to ensure that this classifier can run on the Arduino Nano BLE Sense 33 for completenes. Note that this classifier is slightly different than that offered in (1), but 
+it still relies completely on Dynamic Time Warping. Thus we beleive that it is a strong representation of the uWaves classifier.
+
+
+(3) [Gesthaar: An accelerometer-based gesture recognition method and its application in NUI driven pervasive healthcare](https://ieeexplore.ieee.org/abstract/document/6152471)
+
+
 
 
 
