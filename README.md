@@ -3,14 +3,34 @@
 ## Abstract
 
 Gesture Recognition is an emerging field with a breadth of use ranging from improved human-computer interactions, medical care, and numerous more applications.
-In this project, we are attempting to build a robust, efficient gesture recognition application to allow recognition of shapes drawn on a 2-D surface. 
-By leveraging the accelerometer and TinyML support built into the Arduino Nano BLE Sense 33, we hope to be able to recognize many common shapes irrespective of the user. 
-We foresee difficulty collecting enough training data to ensure a robust model; therefore, we will be especially diligent on selecting a classifier that won’t overfit to our own handwriting.
+In this project, we are analyzing two efficient, low-complexity gesture recognition algorithms in hopes to undertand the best approach for ultra low-power microcontrollers. 
+We will test each of these approaches using the commmon gestures tested betweeen each research paper in order to accurately represent its effectiveness. Furthermore, we will
+evaluate relevant considerations in gesture control such as user and time dependency, robustness in recognizing gestures with slight difference from training samples, and 
+associated complexity with each approach. All these evaluations will occur Arduino Nano BLE Sense 33, and will all utilize real-time accelerometer data and classification results.
 
-Digits present another significant challenge and our ability to accurately and robustly identify digits may be diminished compared to that of shapes. 
-While these numbers may simply be a combination of intricate shapes, the challenge would be determining the differences between them. 
-While shape detection has been utilized and developed before, we must ensure that this model can operate successfully and be altered for other applications. 
-Thus, we hope to first develop strong recognition of shapes and then evaluate our model before proceeding towards digit recognition.
+
+The first approach is based on research paper (1) which utilizes Dynamic Time Warping in order to classify hand gestures. These hand gestures are designed to be mutually 
+exclusive from each other, and only rely on full hand/arm motion (rather than finger motion). Thus, the Nano BLE Sense will be mounted on the arm of the user during testing.
+
+The second approach is based on research paper (2) instead relies on a Gaussian Kernel Support Vector Machine classification in ordre to recognize hand gestures. Furthermore,
+this approach uses a Haar Wavelet transform in order to reduce noise, user dependence, and classification sensitivisy. Note that this approach is designed for the same form of
+gestures as research paper (1), thus we will use the same testing apparatus. More details about both of these approaches can be found in the References section.
+
+Both of these appraches represent common techniques for simple gesture recognition; a more demanding recognition task may require more complicated appraches such as Convolutional
+Neural Networks and Hidden Markov Models. However, through this analysis, we instead hope to be able to make an accurate, educated reccomendation for simple gesture recognition tasks
+without the need for significantly computational classification techniques.   
+
+## Timeline
+
+Week 5 - Find relevent references, source code examples, and software packages in order to ensure an accurate and effective analysis.
+
+Week 6/7 - Set up platforms for both recognition approaches, and ensure Arduino implementaitons adhere to methodology outlinded in research papers.
+
+Week 8 - Collect training data, and evaluate ideal case test data in order to validate claims on research paper. Prepare Youtube Presentation.
+
+Week 9 - Evaluate all relevant gesture control pamaters, and rigoursly test non-ideal gestures. 
+
+Week 10 - Finalize all Evaluations, Prepare final report and Youtube presentation.  
 
 ## References 
 
@@ -43,7 +63,8 @@ This github webpage walks through the process of training a Gaussian Kernel SVM 
 with enough capabilites. We will use this method to train and import the Gaussian Kernel SVM to the Nano Sense BLE, and then test the effectiveness of the strategy suggested in (4). 
 
 (6) [Haar Transform Library for C](https://people.sc.fsu.edu/~jburkardt/c_src/haar/haar.html) \
-This code repository provided by Florida State University offers the Haar and Inverse Haar Transform implemented in C. Thus, this code can be easily ported to the Nano BLE sense in order to replicate the approach used in (3)
+This code repository provided by Florida State University offers the Haar and Inverse Haar Transform implemented in C. Thus, this code can be easily ported to the Nano BLE sense in order to 
+replicate the approach used in (3).
 
 
 
