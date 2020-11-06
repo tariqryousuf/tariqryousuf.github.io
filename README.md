@@ -32,8 +32,19 @@ We hope to ensure that this classifier can run on the Arduino Nano BLE Sense 33 
 it still relies completely on Dynamic Time Warping. Thus we beleive that it is a strong representation of the uWaves classifier.
 
 
-(3) [Gesthaar: An accelerometer-based gesture recognition method and its application in NUI driven pervasive healthcare](https://ieeexplore.ieee.org/abstract/document/6152471)
+(4) [Gesthaar: An accelerometer-based gesture recognition method and its application in NUI driven pervasive healthcare](https://ieeexplore.ieee.org/abstract/document/6152471) \
+This research paper presents Gesthaar as a robust gesture recognition classifier utilizing Haar Transforms and Gaussian Kernel Support Vector Machine Classifier. This paper presents this
+approach as an alternatuve to the Dynamic Time Warping Classificantion method presented in (1). Based on the research paper, this classifier should be significantly more user and time independent
+compared to Dynamic Time Warping classification techniques. This method is more computationally complex than the approach in (1), however the Nano BLE Sense should be able to easily handle
+this algorithm. We will compare this classifier to (1) through various relevant requirements of gesture control. 
 
+(5) [Even Smaller Machine Learning Models for your MCU](https://eloquentarduino.github.io/2020/02/even-smaller-machine-learning-models-for-your-mcu/) \
+This github webpage walks through the process of training a Gaussian Kernel SVM classifier in Python and porting that model to C. Thus, this model could be run on any microcontroller
+with enough capabilites. We will use this method to train and import the Gaussian Kernel SVM to the Nano Sense BLE, and then test the effectiveness of the strategy suggested in (4). 
+
+(6) [Haar Transform Library for C](https://people.sc.fsu.edu/~jburkardt/c_src/haar/haar.html) \
+This code repository provided by Florida State University offers the Haar and Inverse Haar Transform implemented in C. Thus, this code can be easily ported to the Nano BLE sense, 
+and then used in order to replicate the approach used in (3)
 
 
 
