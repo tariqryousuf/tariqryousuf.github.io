@@ -1,5 +1,7 @@
 ## Tariq Yousuf and Mark Geha
 
+[Project Repository](https://github.com/tariqryousuf/tariqryousuf.github.io) \ 
+
 ## Abstract
 
 Gesture Recognition is an emerging field with a breadth of use ranging from improved human-computer interactions, medical care, and numerous more scientific and simply enjoyable applications.
