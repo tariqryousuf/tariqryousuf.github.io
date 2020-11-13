@@ -14,6 +14,7 @@
 #include <Arduino_LSM9DS1.h>
 #include "training_data.h"
 #include "utility.h"
+#include "limits.h"
 
 // Used for Sampling
 const float accelerationThreshold = 2.5; // threshold of significant in G's
@@ -93,10 +94,33 @@ void loop() {
 
       if (samplesRead == numSamples) {
         // add an empty line if it's the last sample
-        int result = array_distance(input_data, circle_1, numSamples);
-        Serial.print(result);
+        int dtw_result = dtw(input_data, circle_1);
+        Serial.print(dtw_result);
         Serial.println();
       }
     }
   }
+}
+
+int dtw(int sample[][3], int reference[][3])
+{
+  for (int i = 0; i < numSamples; i++)
+  {
+    for (int j = 0; j < numSamples; j++)
+    {
+      cost_matrix[i][j] = INT_MAX;
+    }
+  }
+  cost_matrix[0][0] = 0;
+  
+
+  for (int i = 1; i < numSamples; i++)
+  {
+    for (int j = 1; j < numSamples; j++)
+    {
+      int cost = (int) d3_dist(sample[i], reference[j]);
+      cost_matrix[i][j] = cost + min3(cost_matrix[i-1][j], cost_matrix[i][j-1], cost_matrix[i-1][j-1]);
+    }
+  }
+  return cost_matrix[numSamples-1][numSamples-1]; 
 }
