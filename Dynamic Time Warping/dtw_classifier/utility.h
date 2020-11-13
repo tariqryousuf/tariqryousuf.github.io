@@ -1,15 +1,47 @@
 int non_linear_quantization( float a )
 {
   int return_value;
-  if (abs(a) < 1)
-    return_value = (int) (a * 10.0);
-  else if (abs(a) < 2)
-    return_value = 10 + (int) ((a - 1.0) * 2.0);
+  if (abs(a) < 0.05)
+    return_value = 0;
+  else if (abs(a) < 1.0)
+  {
+    if(a > 0.0)
+      return_value = (int) ((a + 0.1)*10);
+    else
+      return_value = (int) ((a - 0.1)*10);
+  }
+  else if ((a > 0.0))
+  {
+    if(abs(a) < 1.2)
+      return_value = 11;
+    else if(abs(a) < 1.4)
+      return_value = 12;
+    else if(abs(a) < 1.6)
+      return_value = 13;
+    else if(abs(a) < 1.8)
+      return_value = 14;
+    else if(abs(a) < 2.0)
+      return_value = 15;
+    else
+      return_value = 16;
+  }
   else
-    return_value = 16;
-
-  return return_value;
+  {
+    if(abs(a) < 1.2)
+      return_value = -11;
+    else if(abs(a) < 1.4)
+      return_value = -12;
+    else if(abs(a) < 1.6)
+      return_value = -13;
+    else if(abs(a) < 1.8)
+      return_value = -14;
+    else if(abs(a) < 2.0)
+      return_value = -15;
+    else
+      return_value = -16;
+  }
   
+  return return_value;  
 }
 
 int min3(int x, int y, int z)
