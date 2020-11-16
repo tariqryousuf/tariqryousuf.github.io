@@ -14,7 +14,7 @@
 #include <Arduino_LSM9DS1.h>
 
 const float accelerationThreshold = 2.5; // threshold of significant in G's
-const int numSamples = 119;
+const int numSamples = 128;
 
 int samplesRead = numSamples;
 
@@ -63,16 +63,16 @@ void loop() {
 
       samplesRead++;
 
-      int ax = non_linear_quantization(aX);
-      int ay = non_linear_quantization(aY);
-      int az = non_linear_quantization(aZ);
+      //int ax = non_linear_quantization(aX);
+      //int ay = non_linear_quantization(aY);
+      //int az = non_linear_quantization(aZ);
 
       // print the data in CSV format
-      Serial.print(ax);
+      Serial.print(aX);
       Serial.print(',');
-      Serial.print(ay);
+      Serial.print(aY);
       Serial.print(',');
-      Serial.print(az);
+      Serial.print(aZ);
       
    
       Serial.println();

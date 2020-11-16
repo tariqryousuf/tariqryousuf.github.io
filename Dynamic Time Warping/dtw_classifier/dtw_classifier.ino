@@ -18,7 +18,7 @@
 
 // Used for Sampling
 const float accelerationThreshold = 2.5; // threshold of significant in G's
-const int numSamples = 119;
+const int numSamples = 128;
 int samplesRead = numSamples;
 
 // Used for DTW
@@ -94,8 +94,16 @@ void loop() {
 
       if (samplesRead == numSamples) {
         // add an empty line if it's the last sample
-        int dtw_result = dtw(input_data, circle_1);
-        Serial.print(dtw_result);
+        int dtw_result_1 = dtw(input_data, circle_1);
+        int dtw_result_2 = dtw(input_data, reverse_circle_1);
+        if (dtw_result_1 < dtw_result_2)
+          Serial.print("Circle 1 ");
+        else
+          Serial.print("Circle 2");
+        Serial.println();
+        Serial.print(dtw_result_1);
+        Serial.println();
+        Serial.print(dtw_result_2);
         Serial.println();
       }
     }
