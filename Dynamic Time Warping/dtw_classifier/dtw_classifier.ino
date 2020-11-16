@@ -99,12 +99,23 @@ void loop() {
         int dtw_result_1 = dtw(input_data, circle_1);
         int dtw_result_2 = dtw(input_data, reverse_circle_1);
         int dtw_result_3 = dtw(input_data, downward_arrow_1);
-        if ((dtw_result_1 < dtw_result_2) && (dtw_result_1 < dtw_result_3))
+        int dtw_result_4 = dtw(input_data, upward_arrow_1);
+        int dtw_result_5 = dtw(input_data, left_arrow_1);
+        int dtw_result_6 = dtw(input_data, right_arrow_1);
+        int cost_array[6] = {dtw_result_1, dtw_result_2, dtw_result_3, dtw_result_4, dtw_result_5, dtw_result_6};
+        int min_idx = min_cost(cost_array, 6);
+        if (min_idx == 0)
           Serial.print("Clockwise Circle");
-        else if ((dtw_result_2 < dtw_result_1) && (dtw_result_2 < dtw_result_3))
+        else if (min_idx == 1)
           Serial.print("Counterclockwise Circle");
-        else
+        else if (min_idx == 2)
            Serial.print("Downward Arrow");
+        else if (min_idx == 3)
+           Serial.print("Upward Arrow");
+        else if (min_idx == 4)
+           Serial.print("Left Arrow");
+        else
+          Serial.print("Right Arrow");
         Serial.println();
         /*
         Serial.print(dtw_result_1);
