@@ -81,6 +81,7 @@ void loop() {
       input_data[samplesRead][2] = az;
 
       // print the data in CSV format
+      /*
       Serial.print(ax);
       Serial.print(',');
       Serial.print(ay);
@@ -89,6 +90,7 @@ void loop() {
       
    
       Serial.println();
+      */
 
       samplesRead++;
 
@@ -96,15 +98,20 @@ void loop() {
         // add an empty line if it's the last sample
         int dtw_result_1 = dtw(input_data, circle_1);
         int dtw_result_2 = dtw(input_data, reverse_circle_1);
-        if (dtw_result_1 < dtw_result_2)
-          Serial.print("Circle 1 ");
+        int dtw_result_3 = dtw(input_data, downward_arrow_1);
+        if ((dtw_result_1 < dtw_result_2) && (dtw_result_1 < dtw_result_3))
+          Serial.print("Clockwise Circle");
+        else if ((dtw_result_2 < dtw_result_1) && (dtw_result_2 < dtw_result_3))
+          Serial.print("Counterclockwise Circle");
         else
-          Serial.print("Circle 2");
+           Serial.print("Downward Arrow");
         Serial.println();
+        /*
         Serial.print(dtw_result_1);
         Serial.println();
         Serial.print(dtw_result_2);
         Serial.println();
+        */
       }
     }
   }
