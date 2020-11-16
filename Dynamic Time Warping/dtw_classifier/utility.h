@@ -68,3 +68,19 @@ int array_distance(int x[][3], int y[][3], int sample_size)
   }
   return distance;
 }
+
+int min_cost(int x[], int n)
+{
+  int minimum = x[0];
+  int min_idx = 0;
+  for (int i = 1; i < n; i++)
+  {
+    if(x[i] < minimum)
+    {
+      minimum = x[i];
+      min_idx = i;
+    }
+  }
+  
+  return min_idx;
+}
