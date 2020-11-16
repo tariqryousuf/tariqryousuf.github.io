@@ -39,7 +39,7 @@ def non_linear_quantization(a):
     return return_value
 
 results = []
-with open("reverse_circle_1.csv") as csvfile:
+with open("downward_arrow_1.csv") as csvfile:
     reader = csv.reader(csvfile, quoting=csv.QUOTE_NONNUMERIC) # change contents to floats
     for row in reader: # each row is a list
         results.append(row)
