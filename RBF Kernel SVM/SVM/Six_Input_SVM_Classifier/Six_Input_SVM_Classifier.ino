@@ -102,13 +102,20 @@ void loop() {
           features[i+62] = z[i];
         }
         //Serial.print(predict(features));
-        
         int prediction = (int) predict(features);
+        //Serial.print(prediction);
         if (prediction == 0)
           Serial.print("Clockwise Circle");
-        else
+        else if (prediction == 1)
           Serial.print("Counterclockwise Circle");
-        
+        else if (prediction == 2)
+          Serial.print("Downward Arrow");
+        else if (prediction == 3)
+          Serial.print("Left Arrow");
+        else if (prediction == 4)
+          Serial.print("Right Arrow");
+        else
+          Serial.print("Upward Arrow");
         Serial.println();
       }
     }
