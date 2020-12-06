@@ -19,11 +19,14 @@
 // Used for Sampling
 const float accelerationThreshold = 2.5; // threshold of significant in G's
 const int numSamples = 128;
+const int reducedSamples = 31;
 int samplesRead = numSamples;
 
 // Used for DTW
-int input_data[numSamples][3];
-int cost_matrix[numSamples][numSamples];
+double x_input_data[numSamples];
+double y_input_data[numSamples];
+double z_input_data[numSamples];
+int cost_matrix[reducedSamples][reducedSamples];
 
 
 void setup() {
@@ -71,14 +74,12 @@ void loop() {
 
       
 
-      int ax = non_linear_quantization(aX);
-      int ay = non_linear_quantization(aY);
-      int az = non_linear_quantization(aZ);
+     
 
       // record the samples
-      input_data[samplesRead][0] = ax;
-      input_data[samplesRead][1] = ay;
-      input_data[samplesRead][2] = az;
+      x_input_data[samplesRead] = (double) aX;
+      y_input_data[samplesRead] = (double) aY;
+      z_input_data[samplesRead] = (double) aZ;
 
       // print the data in CSV format
       /*
@@ -96,12 +97,27 @@ void loop() {
 
       if (samplesRead == numSamples) {
         // add an empty line if it's the last sample
-        int dtw_result_1 = dtw(input_data, circle_1);
-        int dtw_result_2 = dtw(input_data, reverse_circle_1);
-        int dtw_result_3 = dtw(input_data, downward_arrow_1);
-        int dtw_result_4 = dtw(input_data, upward_arrow_1);
-        int dtw_result_5 = dtw(input_data, left_arrow_1);
-        int dtw_result_6 = dtw(input_data, right_arrow_1);
+		double x_haar_1[(numSamples/2) -1], y_haar_1[(numSamples/2) -1], z_haar_1[(numSamples/2) -1];
+        haar_transform(x_input_data, x_haar_1, numSamples);
+        haar_transform(y_input_data, y_haar_1, numSamples);
+        haar_transform(z_input_data, z_haar_1, numSamples);
+        double x[31], y[31], z[31];
+        haar_transform(x_haar_1, x, 64);
+        haar_transform(y_haar_1, y, 64);
+        haar_transform(z_haar_1, z, 64);
+        int features[reducedSamples][3];
+        for (int i = 0; i < 31; i++)
+        {
+          features[i][0] = non_linear_quantization(x[i]);
+          features[i][1]= non_linear_quantization(y[i]);
+          features[i][2] = non_linear_quantization(z[i]);
+        }
+        int dtw_result_1 = dtw(features, circle_1);
+        int dtw_result_2 = dtw(features, reverse_circle_1);
+        int dtw_result_3 = dtw(features, downward_arrow_1);
+        int dtw_result_4 = dtw(features, upward_arrow_1);
+        int dtw_result_5 = dtw(features, left_arrow_1);
+        int dtw_result_6 = dtw(features, right_arrow_1);
         int cost_array[6] = {dtw_result_1, dtw_result_2, dtw_result_3, dtw_result_4, dtw_result_5, dtw_result_6};
         int min_idx = min_cost(cost_array, 6);
         if (min_idx == 0)
@@ -130,9 +146,9 @@ void loop() {
 
 int dtw(int sample[][3], int reference[][3])
 {
-  for (int i = 0; i < numSamples; i++)
+  for (int i = 0; i < reducedSamples; i++)
   {
-    for (int j = 0; j < numSamples; j++)
+    for (int j = 0; j < reducedSamples; j++)
     {
       cost_matrix[i][j] = INT_MAX;
     }
@@ -140,13 +156,13 @@ int dtw(int sample[][3], int reference[][3])
   cost_matrix[0][0] = 0;
   
 
-  for (int i = 1; i < numSamples; i++)
+  for (int i = 1; i < reducedSamples; i++)
   {
-    for (int j = 1; j < numSamples; j++)
+    for (int j = 1; j < reducedSamples; j++)
     {
       int cost = (int) d3_dist(sample[i], reference[j]);
       cost_matrix[i][j] = cost + min3(cost_matrix[i-1][j], cost_matrix[i][j-1], cost_matrix[i-1][j-1]);
     }
   }
-  return cost_matrix[numSamples-1][numSamples-1]; 
+  return cost_matrix[reducedSamples-1][reducedSamples-1]; 
 }
