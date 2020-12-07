@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.svm import SVC
 from micromlgen import port
+from sklearn.model_selection import train_test_split
 
 def haar_transform(x, n):
     y = []
@@ -256,12 +257,21 @@ y[150:200] = np.full(50, 3)
 y[200:250] = np.full(50, 4)
 y[250:300] = np.full(50, 5)
 
+'''
 clf = SVC(kernel='rbf', gamma=0.01)
 clf.fit(X, y)
 y_predict = clf.predict(X)
 c_code = port(clf)
 print(c_code)
+'''
 
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.5, random_state=5)
+clf = SVC(kernel='rbf', gamma=0.01)
+clf.fit(X_train, y_train)
+train_error = 1 - clf.score(X_train, y_train)
+print(train_error)
+test_error = 1 - clf.score(X_test, y_test)
+print(test_error)
 
 
 

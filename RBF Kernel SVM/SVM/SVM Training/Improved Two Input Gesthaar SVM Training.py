@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.svm import SVC
 from micromlgen import port
+from sklearn.model_selection import train_test_split
 
 def haar_transform(x, n):
     y = []
@@ -89,41 +90,34 @@ plt.show()
 y = np.zeros(100)
 y[50:100] = np.ones(50)
 
-
+'''
 clf = SVC(kernel='rbf', gamma=0.01)
 clf.fit(X, y)
 y_predict = clf.predict(X)
 c_code = port(clf)
 print(c_code)
-
-
-
 '''
-print(results[0])
-print(results[1])
-print(results[0][0])
-print(results[1][0])
-x_coord = []
-y_coord = []
-z_coord = []
-for i in range(0, len(results)):
-    x_coord.append(results[i][0])
-    y_coord.append(results[i][1])
-    z_coord.append(results[i][2])
 
-plt.plot(range(1, 129), x_coord, label="Orginal")
-x_haar_1 = haar_transform(x_coord, 128)
-plt.legend()
-plt.show()
-plt.plot(range(1, 64), x_haar_1, label="64 Features")
-plt.legend()
-plt.show()
-x_haar_2 = haar_transform(x_haar_1, 64)
-plt.plot(range(1, 32), x_haar_2, label="32 Features")
-plt.legend()
-plt.show()
-x_haar_3 = haar_transform(x_haar_2, 32)
-plt.plot(range(1, 16), x_haar_3, label="16 Features")
-plt.legend()
-plt.show()
-'''
+# Grid Search for best gamma and c
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=5)
+clf = SVC(kernel='rbf', gamma=0.5)
+clf.fit(X_train, y_train)
+train_error = 1 - clf.score(X_train, y_train)
+print(train_error)
+test_error = 1 - clf.score(X_test, y_test)
+print(test_error)
+#for i in range (1, 11):
+#    for j in range (1, 11):
+
+
+
+
+
+
+
+
+
+
+
+
