@@ -3,9 +3,11 @@
 [Project Repository](https://github.com/tariqryousuf/tariqryousuf.github.io) 
 
 ## Table of Contents
-* [Abstract](#Abstract)
-* [Timeline](#Timeline)
-* [References](#References)
+* TOC
+* [Abstract](#abstract)
+* [Timeline](#timeline)
+* [References](#references)
+{:toc}
 
 
 
