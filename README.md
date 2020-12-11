@@ -1,14 +1,11 @@
 ## Tariq Yousuf and Mark Geha
-{:.no_toc}
 
 [Project Repository](https://github.com/tariqryousuf/tariqryousuf.github.io) 
 
 ## Table of Contents
-{:.no_toc}
-* [Abstract](#abstract)
-* [Timeline](#timeline)
-* [References](#references)
-{:toc}
+* [Abstract](#abstract) <br />
+* [Timeline](#timeline) <br />
+* [References](#references) <br />
 
 
 
