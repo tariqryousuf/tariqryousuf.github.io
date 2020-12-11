@@ -1,7 +1,3 @@
----
-layout: default
----
-
 
 
 ## Tariq Yousuf and Mark Geha
