@@ -1,6 +1,3 @@
-
-
-
 ## Tariq Yousuf and Mark Geha
 
 [Project Repository](https://github.com/tariqryousuf/tariqryousuf.github.io) 
