@@ -37,7 +37,7 @@ However, through this analysis, we instead hope to be able to make an accurate, 
 Finally, we will make continuous improvements on all of the aformentioned methods in order to improve classification for a wide variety of users in different enviornments. Through this report, we hope to develop the most effective gesture recogniton classifier, and then finally compare it to a Neural Netowrk classifier.   
 
 
-#Implementation
+# Implementation
 
 ## Dynamic Time Warping
 
