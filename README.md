@@ -1,4 +1,5 @@
 ## Tariq Yousuf and Mark Geha
+{:.no_toc}
 
 [Project Repository](https://github.com/tariqryousuf/tariqryousuf.github.io) 
 
