@@ -1,5 +1,2 @@
 theme: jekyll-theme-cayman
-project:
-    name: ECE M202A - An Analysis of Efficient Gesture-Recognition Methods using Real-time Accelerometer Data
-    github: https://github.com/tariqryousuf/tariqryousuf.github.io
-
+title: ECE M202A - An Analysis of Efficient Gesture-Recognition Methods using Real-time Accelerometer Data
