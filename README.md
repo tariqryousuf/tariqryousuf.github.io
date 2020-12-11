@@ -51,8 +51,8 @@ We will now introduce Haar Wavelet Transform, Dynamic Time Warping, and RBF Kern
 ## Haar Wavelet Transform
 
 The Haar Wavelet transform was proposed in research paper (4) as a method of reducing features, noise, and other small-signal pertubations that could lead to misclassification. 
-For our uses, we utilized the Haar Wavelet tranform as an averaging function, which could decopose a 128-feature signal to 31 features using the below formula:
-<img src="https://render.githubusercontent.com/render/math?math=e^{i \pi} = -1"> 
+For our uses, we utilized the Haar Wavelet tranform as an averaging function, which could decopose a 128-feature signal to 63 features using the below formula:
+<img src="https://render.githubusercontent.com/render/math?math=s_k = (x_2k - x_(2k-1))/2"> 
 
 ## Dynamic Time Warping
 
