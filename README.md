@@ -27,7 +27,7 @@ Both of these algorithms are open-source, efficient, low-complexity, and prevela
 We will test each of these approaches using the common gestures tested between each research paper in order to accurately represent its effectiveness. 
 The most ideal method of testing would come down to the accuracy of the detection and inclusion of noise and approximations.  
 Furthermore, we will evaluate relevant considerations in gesture control such as user and time dependency, robustness in recognizing gestures with slight difference from training samples, and associated complexity with each approach. All these evaluations will occur on an Arduino Nano BLE Sense 33 and will all utilize real-time accelerometer and gyroscopic data and classification results. This will allow us to accurately create patterns and compare the detection algorithms.
-Once that analysis is complete, we will experiment with methods of improving our classification under these constraings by adding Gaussian Noise and utelizing SMOTE to better balance our training data. Finally, we will compare the accuracy of our methods to that of a high-complexity Neural Network classifier in order to vest understand the trade-offs made between the different classifiers.
+Once that analysis is complete, we will experiment with methods of improving our classification under these constraints by adding Gaussian Noise and utelizing SMOTE to better balance our training data. Finally, we will compare the accuracy of our methods to that of a high-complexity Neural Network classifier in order to vest understand the trade-offs made between the different classifiers.
 
 ## Prior Works and Experimental Setup  
 
@@ -49,6 +49,10 @@ Finally, we will make continuous improvements on all of the aformentioned method
 We will now introduce Haar Wavelet Transform, Dynamic Time Warping, and RBF Kernel SVM and discuss how these algorithms were implemeted on Arduiono. Initial improvements made to the algorithms based on the aformentioned research papers are discussed here; further improvements to these methods using training data augmentations will be introduced once these methods have been thuroughly analyzed. 
 
 ## Haar Wavelet Transform
+
+The Haar Wavelet transform was proposed in research paper (4) as a method of reducing features, noise, and other small-signal pertubations that could lead to misclassification. 
+For our uses, we utilized the Haar Wavelet tranform as an averaging function, which could decopose a 128-feature signal to 31 features using the below formula:
+<img src="https://render.githubusercontent.com/render/math?math=e^{i \pi} = -1"> 
 
 ## Dynamic Time Warping
 
