@@ -58,8 +58,12 @@ For our uses, we utilized the Haar Wavelet tranform as an averaging function, wh
 where x is the original signal, s is the reduced-feature signal, and k is from 0 to N/2 - 1. 
 By recursively using this transform, a signal can be further decomposed to a smaller feature space. 
 
+For our project, we reduced our 128-feature accelerometer data (for each axis) from the Arduiono, and reduced it to a 31-feature signal. 
+As shown below, this tranform significantly reduces the noise of the signal while maintaining the large-signal waveform. 
+Furthermore, any computations on the signals will be significantly faster because the each signal is now 75% smaller. 
 
-
+![128_feature](/Images/Raw_128_feature.png)
+![31_feature](/Images/Filtered_31_feature.png)
 
 ## Dynamic Time Warping
 
