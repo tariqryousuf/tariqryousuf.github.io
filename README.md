@@ -71,8 +71,8 @@ Dynamic Time Warping operates by comparing a sample to various templates and det
 The euclidian distance used between the sample and each template in order to genearate a cost matrix which is then used to determine the best-fit template.
 The below figures taken from research paper (1) best summarize this algorithm and provide a graphical interpretation. 
 
-![dtw_graph](/Images/dtw_graph.jpg)
-![31_feature](/Images/dtw_tree.jpg)
+![dtw_graph](/Images/DTW_graph.jpg)
+![31_feature](/Images/DTW_tree.jpg)
 
 By looping through the entire time range of the sample and the templates, this algorithm makes an effort to reduce time-dependencies. 
 However, we will later see that this naive template matching results in highly inaccurate results in very inaccurate results when non-ideal samples are used.
