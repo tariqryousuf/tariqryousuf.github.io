@@ -5,8 +5,15 @@
 ## Table of Contents
 * [Introduction](#introduction) <br />
 * [Prior Works and Experimental Setup](#prior-works-and-experimental-setup) <br />
-* [Implementation](#implementation) <br />
+* [Pre-Improved Implementation](#pre-improved-implementation) <br />
+* [Haar Wavelet Transform](#haar-wavelet-transform) <br />
 * [Dynamic Time Warping](#dynamic-time-warping) <br />
+* [RBF Kernel SVM](#rbf-kernel-svm) <br />
+* [Experimental Results](#experimental-results) <br />
+* [Improvements to RBF Kernel SVM](#improvements-to-rbf-kernel-svm) <br />
+* [Gaussian Noise](#gaussian-noise) <br />
+* [SMOTE](#smote) <br />
+* [Improved Experimental Results](#improved-experimental-results) <br />
 * [Timeline](#timeline) <br />
 * [References](#references) <br />
 
@@ -37,10 +44,28 @@ However, through this analysis, we instead hope to be able to make an accurate, 
 Finally, we will make continuous improvements on all of the aformentioned methods in order to improve classification for a wide variety of users in different enviornments. Through this report, we hope to develop the most effective gesture recogniton classifier, and then finally compare it to a Neural Netowrk classifier.   
 
 
-# Implementation
+# Pre-Improved Implementation
+
+We will now introduce Haar Wavelet Transform, Dynamic Time Warping, and RBF Kernel SVM and discuss how these algorithms were implemeted on Arduiono. Initial improvements made to the algorithms based on the aformentioned research papers are discussed here; further improvements to these methods using training data augmentations will be introduced once these methods have been thuroughly analyzed. 
+
+## Haar Wavelet Transform
 
 ## Dynamic Time Warping
 
+## RBF Kernel SVM
+
+
+# Experimental Results 
+
+
+# Improvements to RBF Kernel SVM
+
+## Gaussian Noise 
+
+## SMOTE 
+
+
+# Improved Experimental Results
 
 
 ## Timeline
