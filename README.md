@@ -67,7 +67,24 @@ Furthermore, any computations on the signals will be significantly faster becaus
 
 ## Dynamic Time Warping
 
+Dynamic Time Warping operates by comparing a sample to various templates and determining which template is closest to the sample. 
+The euclidian distance used between the sample and each template in order to genearate a cost matrix which is then used to determine the best-fit template.
+The below figures taken from research paper (1) best summarize this algorithm and provide a graphical interpretation. 
+
+![dtw_graph](/Images/dtw_graph.jpg)
+![31_feature](/Images/dtw_tree.jpg)
+
+By looping through the entire time range of the sample and the templates, this algorithm makes an effort to reduce time-dependencies. 
+However, we will later see that this naive template matching results in highly inaccurate results in very inaccurate results when non-ideal samples are used.
+Furthermore, note that this algorithm is of the order <img src="https://render.githubusercontent.com/render/math?math=O(mn^2)"> since sample must warp through each m template, givem that they both have n features.
+In order to significantly reduce the complexity of Dynamic Time Warping, we employed the Haar Wavelet tranform to reduce the features for each dimension from 128 to 31. Research paper (1) offered no such feature reduction techniques, and instead did all the classification using a PC rather than a microcontroller.
+This optimizaiton allowed us to efficiently run DTW on the Arduino with accuracy expected of this classifier. 
+
 ## RBF Kernel SVM
+
+RBF Kernel SVM instead operates by using a non-linear boundary and Support Vectors to accuracy and efficiently classify the samples in linear time. 
+Based on resarch paper (4), the SVM classifier opearates on 31-feature Haar transformed data.  
+
 
 
 # Experimental Results 
