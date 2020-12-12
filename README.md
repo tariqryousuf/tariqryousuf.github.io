@@ -83,8 +83,12 @@ This optimizaiton allowed us to efficiently run DTW on the Arduino with accuracy
 ## RBF Kernel SVM
 
 RBF Kernel SVM instead operates by using a non-linear boundary and Support Vectors to accuracy and efficiently classify the samples in linear time. 
-Based on resarch paper (4), the SVM classifier opearates on 31-feature Haar transformed data.  
+Based on resarch paper (4), the SVM classifier opearates on 31-feature Haar transformed data. 
+As explaineb below, this classifier offered a easily-deployable, efficient, and accurate alternative to Dynamic Time Warping
 
+We trained our SVM classifier in Pycharm using the sklearn package. Using a grid search, we found best test accuracy with a gamma of 0.01 and a C of 1.
+Once the model had been trained, we used the [micromlgen](https://eloquentarduino.github.io/2020/02/even-smaller-machine-learning-models-for-your-mcu/) library to convert our classifier to C.
+This package offered a straightforward method of converting our classifier from Python to C, which then could easily be implemented onto the Arduino.
 
 
 # Experimental Results 
@@ -92,9 +96,38 @@ Based on resarch paper (4), the SVM classifier opearates on 31-feature Haar tran
 
 # Improvements to RBF Kernel SVM
 
+Based on the above results, we can see that SVM struggles with certain shapes when non-ideal gestures are presented. 
+In order to improve our classification, we added Gaussian noise to all of our data, and then expanded our training data using SMOTE.
+These processes used to improve our training dataset were presented to us by Professor Srivastava and J.Vikranth Jeyakumar.
+
 ## Gaussian Noise 
 
+The process used for including Gaussian noise in the training data simply consisted of adding a sample of a Gaussian distribution to each training example.
+The Gaussian distribution had zero mean and a standard deviation that is half of the specific example. 
+This standard deviation had to be emperically selected to best improve the training data; too large of a standard deviation could cause misclassification and two small would be filtered away by the Haar transform.
+
+
+
 ## SMOTE 
+
+SMOTE (Synthetic Minority Oversampling Technique) is a data augmentation technique used to boost the number of miniority examples in a training dataset.
+Part of the Sklearn package, this technique is readily available for many applications, and we used it to boost the outliers in our dataset.
+We used Adaptive Synthetic Sampling (ADASYN), an extension of the SMOTE package, which generates minority examples at locations inversely proportional to the density of that class at that location.
+ADASYN can be easily visualized in the below figures taken from referece :
+
+Before ADASYN:
+
+
+![Before_ADASYN](/Images/Scatter-Plot-of-Imbalanced-Binary-Classification-Problem.png)
+
+After ADASYN:
+
+![After_ADASYN](/Images/Scatter-Plot-of-Imbalanced-Dataset-with-Adaptive-Synthetic-Sampling-ADASYN.png)
+
+
+We theorized that we could use this method to increase samples in regions that our training data didn't emphasize, and thus increase accuracy of non-ideal gestures.
+Note that our training data contained non-ideal gestures that have vastly different accelerometer data than ideal gestures, so we hypothesized that this method would create more of these non-ideal examples and thus force the SVM to place more weight on these examples.
+With enough fine-tuning, we could find a balance where this process improved non-ideal gesture recognition without diminishing ideal gesture recognition accuracy. 
 
 
 # Improved Experimental Results
