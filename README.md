@@ -113,7 +113,7 @@ This standard deviation had to be emperically selected to best improve the train
 SMOTE (Synthetic Minority Oversampling Technique) is a data augmentation technique used to boost the number of miniority examples in a training dataset.
 Part of the Sklearn package, this technique is readily available for many applications, and we used it to boost the outliers in our dataset.
 We used Adaptive Synthetic Sampling (ADASYN), an extension of the SMOTE package, which generates minority examples at locations inversely proportional to the density of that class at that location.
-ADASYN can be easily visualized in the below figures taken from referece :
+ADASYN can be easily visualized in the below figures taken from referece (Note that our training data is much more linearly-separable than the below example):
 
 Before ADASYN:
 
@@ -126,7 +126,7 @@ After ADASYN:
 
 
 We theorized that we could use this method to increase samples in regions that our training data didn't emphasize, and thus increase accuracy of non-ideal gestures.
-Note that our training data contained non-ideal gestures that have vastly different accelerometer data than ideal gestures, so we hypothesized that this method would create more of these non-ideal examples and thus force the SVM to place more weight on these examples.
+Note that our training data already contained non-ideal gestures that have vastly different accelerometer data than ideal gestures, so we hypothesized that this method would create more of these non-ideal examples and thus force the SVM to place more weight on these examples.
 With enough fine-tuning, we could find a balance where this process improved non-ideal gesture recognition without diminishing ideal gesture recognition accuracy. 
 
 
@@ -148,15 +148,13 @@ Week 10 - Finalize all Evaluations, Prepare final report and YouTube presentatio
 ## References 
 
 (1) [uWave: Accelerometer-based personalized gesture recognition and it applications](https://www.sciencedirect.com/science/article/abs/pii/S1574119209000674) \
-This research article presents uWave, a highly-efficient, low-complexity method of gesture recognition using Dynamic Time Warping. This research paper boasts an approach that requires small amounts of training data and very little computational capabilities, however, this approach relies on a simple and naive classifier. This ideally helps us collect necessary data and test whether small amounts of training data can optimally provide a solid amount of successful testing results. Dynamic Time Warping, and its transformation into a classifier in this research paper, would struggle to identify gestures that differ from the training data. Nevertheless, this approach may prove adequate in certain situations for the gestures tested, thus this method will serve as a baseline classifier in this analysis; this comes from our desire to test the actual model itself, so we can determine accuracy of both intended and extraneous solutions.
+This research article presents uWave, a highly-efficient, low-complexity method of gesture recognition using Dynamic Time Warping. This research paper boasts an approach that requires small amounts of training data and very little computational capabilities, however, this approach relies on a simple and naive classifier. Dynamic Time Warping, and its transformation into a classifier in this research paper, would struggle to identify gestures that differ from the training data. Nevertheless, this approach may prove adequate in certain situations for the gestures tested, thus this method will serve as a baseline classifier in this analysis; this comes from our desire to test the actual model itself, so we can determine accuracy of both intended and extraneous solutions.
 
-(2) [Gesture Recognition using Accelerometer and ESP](https://create.arduino.cc/projecthub/mellis/gesture-recognition-using-accelerometer-and-esp-71faa1) \
-This application uses the Example-based Sensor Predictions source code (referenced below) in order to classify real-time accelerometer data from an Arduino. This application facilitates an efficient method of producing useful training data and testing various gestures through a GUI. This application will run on our local computer, but the source code is designed for Arduino and can be easily deployed to various microcontroller. Thus, we believe it is appropriate to use
-this application due to these benefits. The application of this model will be ideal for testing purposes and will allow us to properly collect data to determine accuracy.
+(2) [Wikipedia: Dynamic Time Warping](https://en.wikipedia.org/wiki/Dynamic_time_warping) \
+This Wikipedia page provides a simple implementation of Dynamic Time Warping in MATLAB, which we were easily able to convert to C and then implement on the Arduino.
 
-(3) [Example-based Sensor Predictions](https://github.com/damellis/ESP) \
-This GitHub repository provides the source code for the above application. This repository includes an implementation of Dynamic Time Warping that can be easily ported to Arduino. We hope to ensure that this classifier can run on the Arduino Nano BLE Sense 33 for completeness. Note that this classifier is slightly different than that offered in (1), but it still relies completely on Dynamic Time Warping. Thus, we believe that it is a strong representation of the uWaves classifier.
-
+(3) [Arduino TensorFlow Lite Tutorial](https://github.com/arduino/ArduinoTensorFlowLiteTutorials) \
+This GitHub repository provided us with source code we used to collect training data, and skeleton code that we used classify gestures in real-time. Although we didn't use TinyML or TensorFlow Lite, this repository provided many resources for getting started with gesture recognition on an Arduino. 
 
 (4) [Gesthaar: An accelerometer-based gesture recognition method and its application in NUI driven pervasive healthcare](https://ieeexplore.ieee.org/abstract/document/6152471) \
 This research paper presents Gesthaar as a robust gesture recognition classifier utilizing Haar Transforms and Gaussian Kernel Support Vector Machine Classifier. This paper presents this
@@ -164,7 +162,17 @@ approach as an alternative to the Dynamic Time Warping Classification method pre
 compared to Dynamic Time Warping classification techniques. This will help us not only filter out noise, which is ideal, but also ensure there is minimal margin of error amongst users. As there are two of us, this testing can be performed. This method is more computationally complex than the approach in (1), however the Nano BLE Sense should be able to easily handle this algorithm. We will compare this classifier to (1) through various relevant requirements of gesture control. 
 
 (5) [Even Smaller Machine Learning Models for your MCU](https://eloquentarduino.github.io/2020/02/even-smaller-machine-learning-models-for-your-mcu/) \
-This GitHub webpage walks through the process of training a Gaussian Kernel SVM classifier in Python and porting that model to C. Thus, this model could be run on any microcontroller with enough capabilities. We will use this method to train and import the Gaussian Kernel SVM to the Nano Sense BLE, and then test the effectiveness of the strategy suggested in (4). Luckily, our device allows us to perform such tasks, so testing is within our bandwidth.
+This GitHub webpage walks through the process of training a Gaussian Kernel SVM classifier in Python and porting that model to C. Thus, this model could be run on any microcontroller with enough capabilities. We used the package presented in this website (micromlgen) to import the Gaussian Kernel SVM to the Nano Sense BLE, and then test the effectiveness of the strategy suggested in (4).
 
 (6) [Haar Transform Library for C](https://people.sc.fsu.edu/~jburkardt/c_src/haar/haar.html) \
 This code repository provided by Florida State University offers the Haar and Inverse Haar Transform implemented in C. Thus, this code can be easily ported to the Nano BLE sense in order to replicate the approach used in (4).
+
+(7) [Discrete Haar Wavelet Transform](https://www.codeproject.com/Articles/683663/Discrete-Haar-Wavelet-Transformation) \
+This article offered further explanation of the Haar Wavelet transform, and examples that assisted us in implementing it on the Arduino.
+
+(8) [SMOTE Package](https://github.com/scikit-learn-contrib/imbalanced-learn) \
+This is the repository that contains the SMOTE imbalanced learn package that we used to improve our training data.
+
+(9) [SMOTE for Imbalanced Classification in Python](https://machinelearningmastery.com/smote-oversampling-for-imbalanced-classification/) \
+This website offered various extenstions of the SMOTE library, which introduced ADASYN as a method of balancing training data using the inverse of the density of the minority class. 
+ 
