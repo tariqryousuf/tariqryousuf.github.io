@@ -93,10 +93,28 @@ This package offered a straightforward method of converting our classifier from 
 
 # Experimental Results 
 
+Setting up the system with a normalized environment and as accurate motions as possible, we get the following results that show a successful classification by both the SVM and the DTW techniques.
+
+![SVM Normal](/Images/SVM_Normal.png)
+![DTW Normal](/Images/DTW_Normal.png)
+
+Next, we looked to see how speed of motion would affect the classification as people that utilize gesture recognition in games should not be forced to simply rely on one speed.
+
+![SVM Slow](/Images/SWM_Slow.png)
+![DTW Slow](/Images/DTW_Slow.png)
+
+We can see that the SVM is a better classification technique when it comes to a slower speed. A lot of the faults with the DTW seemed to come from the sampling size and there would be an early or late classification. For example, a lot of Left Arrow motions would be detected as Right Arrow motions when the Arduino was returned back to the center. This was only detected when the speed was slowed down, showing that there is a bit more speed dependency with the DTW.
+
+Finally, we looked at implementing our own environmental noise by tilting the Arduino forward at a 45 degree angle. This was encouraged by the concept of video game players leaning forward and not simply holding the controller at a level point. Angular dependence should be limited when it comes to gaming as any sort of tilt causing a problem would seem unfair and not enjoyable. 45 degrees was chosen as it felt like a limit when it comes to comfort level of the player.
+
+![SVM 45](/Images/SVM_45.png)
+![DTW 45](/Images/DTW_45.png)
+
+As we can see, the SVM has a much better ability when it comes to angular dependence while the DTW is unable to differentiate its values from the Down Arrow. This leads us to believe that the downward tilt provides values that are much more sensitive to differentiation and not ideal for gaming.
 
 # Improvements to RBF Kernel SVM
 
-Based on the above results, we can see that SVM struggles with certain shapes when non-ideal gestures are presented. 
+Based on the above results, we can see that, between the two models, the SVM is clearly a better solution when it comes to noisy environments and non-ideal gestures. Since our aim is to provide the best possible solution, we want to look at improving these responses as best as we can.
 In order to improve our classification, we added Gaussian noise to all of our data, and then expanded our training data using SMOTE.
 These processes used to improve our training dataset were presented to us by Professor Srivastava and J.Vikranth Jeyakumar.
 
@@ -107,7 +125,6 @@ The Gaussian distribution had zero mean and a standard deviation that is half of
 This standard deviation had to be emperically selected to best improve the training data; too large of a standard deviation could cause misclassification and two small would be filtered away by the Haar transform.
 
 
-
 ## SMOTE 
 
 SMOTE (Synthetic Minority Oversampling Technique) is a data augmentation technique used to boost the number of miniority examples in a training dataset.
@@ -116,7 +133,6 @@ We used Adaptive Synthetic Sampling (ADASYN), an extension of the SMOTE package,
 ADASYN can be easily visualized in the below figures taken from referece (Note that our training data is much more linearly-separable than the below example):
 
 Before ADASYN:
-
 
 ![Before_ADASYN](/Images/Scatter-Plot-of-Imbalanced-Binary-Classification-Problem.png)
 
@@ -132,6 +148,19 @@ With enough fine-tuning, we could find a balance where this process improved non
 
 # Improved Experimental Results
 
+With the addition of SMOTE to the system, we can see that the accuracy of the system improves to a noticeable point. While SMOTE was only applied to the Up Arrow data and the Left Arrow data, we can see that the accuracy for other motions also improves. Improving the sampling data of a single motion also decreases the amount of misclassifications that occur with different motions, ultimately limiting the choices and ensuring there are less mistakes. The changes are noticeable in the reduced amount of misclassified Up and Left Arrow motions and overall accuracy on those two themselves.
+
+![SVM SMOTE Normal](/Images/SVM_SMOTE_Normal.png)
+![SVM SMOTE Slow](/Images/SVM_SMOTE_Slow.png)
+![SVM SMOTE 45](/Images/SVM_SMOTE_45.png)
+
+## Conclusion
+
+Our initial goal with this investigation was to determine the best possible classification technique in which gesture recognition can be applied. Through research, we found two main techniques, the SVM and the DTW Techniques, that were both widely used and successful in their own way. What we found was that the SVM, while more complicated, was much more accurate and could be used to overcome noise while the DTW was quick and simple, but highly inaccurate when it came to non-ideal motions.
+
+In our research, we aimed to find the best technique for gaming situations where gesture recognition would be utilized by players to achieve goals. With this goal in mind, it became clear that the SVM is the better option to classify different gestures in these specific types of environments.
+
+To fully hit every aspect, we were introduced to the idea of SMOTE which could help improve our classification techniques and decided to apply that to our already successful SVM model. In the end, it was able to provide the accuracy that we needed to get our overall successful classifications in the 90% or higher.
 
 ## Timeline
 
