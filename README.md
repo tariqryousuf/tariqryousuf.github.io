@@ -93,6 +93,8 @@ This package offered a straightforward method of converting our classifier from 
 
 # Experimental Results 
 
+NOTE: The following results were made by a single person based on the training data of the other groupmate. Due to COVID-19 times, we have limited resources and the data is only predictive of its responses to two separate individuals. We would need more interaction to get a better general data set.
+
 NOTE: A key thing to mention about these results is that tests were done in cycles of 100 that minimized human error. In the case that the user accidentally made a motion or made the wrong motion, that piece of data was ignored as it was not a successful attempt to make that motion. By doing this, it removed unnecessary and unrelated outliers from the model and improved the true accuracy. We should not expect the model to work in the case of a human error and we're simply trying to get the accuracy of the system itself.
 
 Setting up the system with a normalized environment and as accurate motions as possible, we get the following results that show a successful classification by both the SVM and the DTW techniques.
