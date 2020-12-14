@@ -100,7 +100,7 @@ Setting up the system with a normalized environment and as accurate motions as p
 
 Next, we looked to see how speed of motion would affect the classification as people that utilize gesture recognition in games should not be forced to simply rely on one speed.
 
-![SVM Slow](/Images/SWM_Slow.png)
+![SVM Slow](/Images/SVM_Slow.png)
 ![DTW Slow](/Images/DTW_Slow.png)
 
 We can see that the SVM is a better classification technique when it comes to a slower speed. A lot of the faults with the DTW seemed to come from the sampling size and there would be an early or late classification. For example, a lot of Left Arrow motions would be detected as Right Arrow motions when the Arduino was returned back to the center. This was only detected when the speed was slowed down, showing that there is a bit more speed dependency with the DTW.
