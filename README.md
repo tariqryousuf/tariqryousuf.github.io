@@ -173,7 +173,7 @@ After ADASYN:
 ![After_ADASYN](/Images/Scatter-Plot-of-Imbalanced-Dataset-with-Adaptive-Synthetic-Sampling-ADASYN.png)
 
 
-We theorized that we could use this method to increase samples in regions that our training data didn't emphasize, and thus increase accuracy of non-ideal gestures for these worse-performing gestures.
+We theorized that we could use this method to increase samples in regions that our training data didn't emphasize, and thus increase accuracy of non-ideal gestures for these worse-performing gestures. Since these non-ideal gestures would have very different accelerometer readings than the ideal gestures, they would correspond to these outliers that we are hoping to emphasize.
 Note that our training data already contained non-ideal gestures that have vastly different accelerometer data than ideal gestures, so we hypothesized that this method would create more of these non-ideal examples and thus force the SVM to place more weight on these examples.
 With enough fine-tuning, we could find a balance where this process improved non-ideal gesture recognition without diminishing ideal gesture recognition accuracy. 
 Specific methods of implementing ADASYNcan be found in the code examples within the Project Repository.
