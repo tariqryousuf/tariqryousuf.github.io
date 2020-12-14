@@ -14,6 +14,7 @@
 * [Gaussian Noise](#gaussian-noise) <br />
 * [SMOTE](#smote) <br />
 * [Improved Experimental Results](#improved-experimental-results) <br />
+* [Neural Network Comparison](#neural-network-comparison) <br />
 * [Timeline](#timeline) <br />
 * [References](#references) <br />
 
@@ -41,7 +42,7 @@ This will ensure that our comparisons are not only accurate, but also emphasize 
 Both of these approaches represent common techniques for simple gesture recognition; a more demanding recognition task may require more complicated approaches such as Convolutional Neural Networks and Hidden Markov Models. 
 However, through this analysis, we instead hope to be able to make an accurate, educated recommendation for simple gesture recognition tasks that don't necessarliy require significantly computational classification techniques.   
 
-Finally, we will make continuous improvements on all of the aformentioned methods in order to improve classification for a wide variety of users in different enviornments. Through this report, we hope to develop the most effective gesture recogniton classifier for this specific task, and then finally compare it to a Neural Netowrk classifier.   
+Finally, we will make continuous improvements on all of the aformentioned methods in order to improve classification for a wide variety of users in different enviornments. Through this report, we hope to develop the most effective gesture recogniton classifier for this specific task, and then finally compare it to a Neural Network classifier.   
 
 
 # Pre-Improved Implementation
@@ -189,7 +190,23 @@ Rather, we are simply preseting this data augmentation technique and providing a
 ![SVM SMOTE 45](/Images/SVM_SMOTE_45.png)
 ![SVM SMOTE Shape](/Images/SVM_SMOTE_Shape.png)
 
-## Conclusion
+## Neural Network Comparison
+
+As a final analysis, we compared the accuracy of the SVM classifier with the training data and the augmented training data to that of a MLP classifier.
+This classifier is provided by Python's sklearn package, and is defined as a multi-layer perceptron artificial neural network. We chose the solver to be lbfgs because this method is preferable for smaller datasets.
+For our analysis, we trained these classifiers with various training dataset sizes in order to determine which classifier performed best under limited training datasets. 
+Note that we are conducting this analysis by splitting our training dataset into test and training data, thus all this classification does not occur on real-time accelerometer data.
+
+![Neural Network](/Images/Neural_Network.png) 
+
+Based on the above plot, the MLP classifier performs better than the SVM classifier in every case, especially when a smaller amount of training data is used. 
+Furthermore, we can see that the ADASYN and Gaussian noise augmentation of the training data provides marginal improvements in accuracy when training data is limited. 
+However, if there is sufficient training data, the ADASYN and Gaussian Noise may have to be limited in order to ensure it doesn't lead to misclassification.
+Based on this, we can hypothesize that a MLP classifier would preform better for this gesture recognition task if there is limited training data. 
+However, note that this classifier is significantly more computationally expensive than the SVM classifier. Based on this, the SVM classsifier may be preferable if there is sufficient training data and the gesture recognition task is simple.
+The marginally worse accuracy offered by SVM can be justified for certain applications by the significantly lower computational complexity and ease of deployability.
+
+# Conclusion
 
 Our initial goal with this investigation was to determine the best possible classification technique in which gesture recognition can be applied. Through research, we found two main techniques, the SVM and the DTW Techniques, that were both widely used and successful in their own way. What we found was that the SVM, while possibly harder to implement due to the necessity of a large training dataset, was much more accurate and could be used to overcome noise while the DTW was quick and simple, but highly inaccurate when it came to non-ideal motions.
 
@@ -197,7 +214,7 @@ In our research, we aimed to find the best technique for gaming situations where
 
 To further extend this classifier, we were introduced to the idea of SMOTE which could help improve our classification techniques and decided to apply that to our already successful SVM model. In the end, it was able to provide the accuracy that we needed to get our overall successful classifications in the 90% or higher.
 
-## Timeline
+# Timeline
 
 Week 5 - Find relevant references, source code examples, and software packages in order to ensure an accurate and effective analysis.
 
@@ -209,7 +226,7 @@ Week 9 - Evaluate all relevant gesture control parameters, and rigorously test n
 
 Week 10 - Finalize all Evaluations, Prepare final report and YouTube presentation.  
 
-## References 
+# References 
 
 (1) [uWave: Accelerometer-based personalized gesture recognition and it applications](https://www.sciencedirect.com/science/article/abs/pii/S1574119209000674) \
 This research article presents uWave, a highly-efficient, low-complexity method of gesture recognition using Dynamic Time Warping. This research paper boasts an approach that requires small amounts of training data and very little computational capabilities, however, this approach relies on a simple and naive classifier. Dynamic Time Warping, and its transformation into a classifier in this research paper, would struggle to identify gestures that differ from the training data. Nevertheless, this approach may prove adequate in certain situations for the gestures tested, thus this method will serve as a baseline classifier in this analysis; this comes from our desire to test the actual model itself, so we can determine accuracy of both intended and extraneous solutions.
@@ -239,3 +256,6 @@ This is the repository that contains the SMOTE imbalanced learn package that we 
 
 (9) [SMOTE for Imbalanced Classification in Python](https://machinelearningmastery.com/smote-oversampling-for-imbalanced-classification/) \
 This website offered various extenstions of the SMOTE library, which introduced ADASYN as a method of balancing training data using the inverse of the density of the minority class. 
+
+(10) [Sklearn MLP Classifier](https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html) \
+This is the definition of the MLP artificial neural network classifier we used for comparison. As shown on the website, the implementation of this classifier only relies on the selection of hyper-parameters.
