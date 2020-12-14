@@ -202,6 +202,7 @@ Note that we are conducting this analysis by splitting our training dataset into
 Based on the above plot, the MLP classifier performs better than the SVM classifier in every case, especially when a smaller amount of training data is used. 
 Furthermore, we can see that the ADASYN and Gaussian noise augmentation of the training data provides marginal improvements in accuracy when training data is limited. 
 However, if there is sufficient training data, the ADASYN and Gaussian Noise may have to be limited in order to ensure it doesn't lead to misclassification.
+
 Based on this, we can hypothesize that a MLP classifier would preform better for this gesture recognition task if there is limited training data. 
 However, note that this classifier is significantly more computationally expensive than the SVM classifier. Based on this, the SVM classsifier may be preferable if there is sufficient training data and the gesture recognition task is simple.
 The marginally worse accuracy offered by SVM can be justified for certain applications by the significantly lower computational complexity and ease of deployability.
