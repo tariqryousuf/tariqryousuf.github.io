@@ -93,6 +93,8 @@ This package offered a straightforward method of converting our classifier from 
 
 # Experimental Results 
 
+NOTE: A key thing to mention about these results is that tests were done in cycles of 100 that minimized human error. In the case that the user accidentally made a motion or made the wrong motion, that piece of data was ignored as it was not a successful attempt to make that motion. By doing this, it removed unnecessary and unrelated outliers from the model and improved the true accuracy. We should not expect the model to work in the case of a human error and we're simply trying to get the accuracy of the system itself.
+
 Setting up the system with a normalized environment and as accurate motions as possible, we get the following results that show a successful classification by both the SVM and the DTW techniques.
 
 ![SVM Normal](/Images/SVM_Normal.png)
@@ -105,12 +107,20 @@ Next, we looked to see how speed of motion would affect the classification as pe
 
 We can see that the SVM is a better classification technique when it comes to a slower speed. A lot of the faults with the DTW seemed to come from the sampling size and there would be an early or late classification. For example, a lot of Left Arrow motions would be detected as Right Arrow motions when the Arduino was returned back to the center. This was only detected when the speed was slowed down, showing that there is a bit more speed dependency with the DTW.
 
-Finally, we looked at implementing our own environmental noise by tilting the Arduino forward at a 45 degree angle. This was encouraged by the concept of video game players leaning forward and not simply holding the controller at a level point. Angular dependence should be limited when it comes to gaming as any sort of tilt causing a problem would seem unfair and not enjoyable. 45 degrees was chosen as it felt like a limit when it comes to comfort level of the player.
+In addition, we looked at implementing our own environmental noise by tilting the Arduino forward at a 45 degree angle. This was encouraged by the concept of video game players leaning forward and not simply holding the controller at a level point. Angular dependence should be limited when it comes to gaming as any sort of tilt causing a problem would seem unfair and not enjoyable. 45 degrees was chosen as it felt like a limit when it comes to comfort level of the player.
 
 ![SVM 45](/Images/SVM_45.png)
 ![DTW 45](/Images/DTW_45.png)
 
 As we can see, the SVM has a much better ability when it comes to angular dependence while the DTW is unable to differentiate its values from the Down Arrow. This leads us to believe that the downward tilt provides values that are much more sensitive to differentiation and not ideal for gaming.
+
+Finally, we tried to recreate these shape patterns with a different methodology. For circles, the training data was taken by forming the circle starting from the top and looping around. For arrows, the training data was taken by moving the whole arm upward. In this test, we aimed to see how sensitive the Classification was if we slightly altered how the shape was formed. To be specific, circles were formed by starting at the bottom and looping around while arrows were formed by simply flicking the wrist. This tests the independence of the models from matching the training data set specifically and also slightly includes an angular sense to it with the flick of the wrist.
+
+![SVM Shape](/Images/SVM_Shape.png)
+![DTW Shape](/Images/DTW_Shape.png)
+
+As we can see, the DTW continues to struggle with identifying data even slightly different from the training set while the SVM continues to have relatively strong success. As expected, the SVM is highly independent of the training data and can build a successful classification aside from that.
+
 
 # Improvements to RBF Kernel SVM
 
@@ -153,6 +163,7 @@ With the addition of SMOTE to the system, we can see that the accuracy of the sy
 ![SVM SMOTE Normal](/Images/SVM_SMOTE_Normal.png)
 ![SVM SMOTE Slow](/Images/SVM_SMOTE_Slow.png)
 ![SVM SMOTE 45](/Images/SVM_SMOTE_45.png)
+![SVM SMOTE Shape](/Images/SVM_SMOTE_Shape.png)
 
 ## Conclusion
 
@@ -204,4 +215,3 @@ This is the repository that contains the SMOTE imbalanced learn package that we 
 
 (9) [SMOTE for Imbalanced Classification in Python](https://machinelearningmastery.com/smote-oversampling-for-imbalanced-classification/) \
 This website offered various extenstions of the SMOTE library, which introduced ADASYN as a method of balancing training data using the inverse of the density of the minority class. 
- 
