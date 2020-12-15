@@ -2,6 +2,8 @@
 
 [Project Repository](https://github.com/tariqryousuf/tariqryousuf.github.io)
 
+[Final Project Presentation](https://www.youtube.com/watch?v=ndKmGEHIkN8)
+
 [Final Project Presentation Slides](https://docs.google.com/presentation/d/1FP_nTddxFG-qUH4bPuEox9TESeqr58xMSrbNBXX_Fog/edit?usp=sharing)
 
 ## Table of Contents
